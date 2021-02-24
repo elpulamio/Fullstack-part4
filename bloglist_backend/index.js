@@ -1,32 +1,16 @@
-require('dotenv').config()
 const http = require('http')
 const express = require('express')
 const app = express()
 app.use(express.json())
-const Blog = require('./models/blog')
-
+const logger = require('./utils/logger')
+const config = require('./utils/config')
+const blogsRouter = require('./controllers/blogs')
+app.use('/api/blogs', blogsRouter)
 const cors = require('cors')
 app.use(cors())
 
-app.get('/api/blogs', (request, response) => {
-  Blog
-    .find({})
-    .then(blogs => {
-      response.json(blogs)
-    })
-})
+const server = http.createServer(app)
 
-app.post('/api/blogs', (request, response) => {
-  const blog = new Blog(request.body)
-
-  blog
-    .save()
-    .then(result => {
-      response.status(201).json(result)
-    })
-})
-
-const PORT = 3003
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+server.listen(config.PORT, () => {
+  logger.info(`Server running on port ${config.PORT}`)
 })

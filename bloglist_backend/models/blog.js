@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
-const process = require('process')
-const mongoUrl = process.env.MONGODB_URI
+const logger = require('../utils/logger')
+const config = require('../utils/config')
 
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
   .then(() => {
-    console.log('connected to MongoDB')
+    logger.info('connected to MongoDB')
   })
   .catch((error) => {
-    console.log('error connecting to MongoDB:', error.message)
+    logger.error('error connecting to MongoDB:', error.message)
   })
 
 const blogSchema = new mongoose.Schema({
@@ -25,5 +25,4 @@ blogSchema.set('toJSON', {
   }
 })
 
-const Blog = mongoose.model('Blog', blogSchema)
-module.exports = Blog
+module.exports = mongoose.model('Blog', blogSchema)
