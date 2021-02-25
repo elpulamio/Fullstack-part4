@@ -9,8 +9,16 @@ const totalLikes = (listWithOneBlog) => {
   return total
 }
 
+const totalLikesBlogs = (blogs) => {
+  let total = blogs.reduce(function (sum, blog) {
+    return sum + parseInt(String(blog.likes)) 
+  }, 0)
+  return total
+}
+
 module.exports = {
   dummy,
-  totalLikes
+  totalLikes,
+  totalLikesBlogs
 }
 
