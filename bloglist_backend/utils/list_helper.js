@@ -3,7 +3,10 @@ const dummy = (blogs) => {
 }
 
 const totalLikes = (listWithOneBlog) => {
-  return parseInt(String(listWithOneBlog.map(blog => blog.likes)))
+  let total = listWithOneBlog.reduce(function (sum, blog) {
+    return sum + parseInt(String(blog.likes)) 
+  }, 0)
+  return total
 }
 
 module.exports = {
