@@ -4,15 +4,19 @@ const blogSchema = new mongoose.Schema({
   title: String,
   author: String,
   url: String,
-  likes: Number
+  likes: { type: Number, default: 0 }
 })
 
-// Duplicate the ID field.
+blogSchema.pre('save', function(next) {
+  if (this.likes === null) {
+      this.likes = 0
+  }
+  next()
+})
+
 blogSchema.virtual('id').get(function(){
   return this._id.toHexString()
 })
-
-// Ensure virtual fields are serialised.
 
 blogSchema.set('toObject', {
   virtuals: true
