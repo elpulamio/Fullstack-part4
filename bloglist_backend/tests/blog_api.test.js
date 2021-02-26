@@ -19,6 +19,7 @@ const initialBlogs = [
     likes: 10
   },
 ]
+
 beforeEach(async () => {
   await Blog.deleteMany({})
   let blogObject = new Blog(initialBlogs[0])
