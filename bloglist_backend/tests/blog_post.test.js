@@ -13,7 +13,7 @@ const blogPost =
       likes: 5
     }
 
-test('Create a valid Service', async() => {
+test('testing post', async() => {
 
   const count = await Blog.count()
   await api

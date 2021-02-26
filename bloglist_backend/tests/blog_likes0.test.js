@@ -11,7 +11,7 @@ const initialBlog =
     url: 'https://www.bretfisher.com/'
   }
 
-test('identifier is named id', async () => {
+test('no likes', async () => {
   await Blog.deleteMany({})
   const blog = new Blog(initialBlog)
   await blog.save()
