@@ -2,18 +2,18 @@ const Blog = require('../models/blog')
 const User = require('../models/user')
 
 const initialBlogs = [
-    {
-      title: 'Docker and Kubernetes',
-      author: 'Bret Fisher',
-      url: 'https://www.bretfisher.com/',
-      likes: 5
-    },
-    {
-      title: 'DevOps and Docker',
-      author: 'Bret Fisher',
-      url: 'https://www.youtube.com/channel/UC0NErq0RhP51iXx64ZmyVfg',
-      likes: 10
-    },
+  {
+    title: 'Docker and Kubernetes',
+    author: 'Bret Fisher',
+    url: 'https://www.bretfisher.com/',
+    likes: 5
+  },
+  {
+    title: 'DevOps and Docker',
+    author: 'Bret Fisher',
+    url: 'https://www.youtube.com/channel/UC0NErq0RhP51iXx64ZmyVfg',
+    likes: 10
+  },
 ]
 
 const nonExistingId = async () => {
